@@ -54,6 +54,33 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/index.html");
 });
   
+// Question 4, serving a json file on a specific route 
+/*
+    -> We are using the same app.get method as in the previous question 
+    -> We are using the res.json method to send the string "Hello json"
+        -> This is the data 
+        -> The key is "message"
+        -> We are serving this as a response to GET requests to the /route 
+        -> This is being served in JSON format 
+    -> The first line sets up the route handler for HTTP GET requests to the /json URL path 
+        -> URLs are paths on servers (not client side)
+        -> We are telling it what will happen when requests are made to this path 
+    -> The arrow function 
+        -> req <- the request
+        -> res <- the response
+    -> Inside the arrow function 
+        -> res.json <- send a JSON response to the client 
+        -> This has a key-value pair 
+        -> The server responds to a call with this 
+*/    
+
+app.get('/json', (req, res) => {
+  res.json({
+    "message": "Hello json"
+  });
+});
+
+
 
 
 
