@@ -200,6 +200,36 @@ app.get(
   );
 
 //  Question 8, getting a route parameter input from the client
+/* 
+	-> We are using app.get <- this method returns information to the client (it 'gets' the information)
+		-> This sets up a route for handling HTTP GET requests 
+		-> With the :word parameter in the URL
+	-> At the directory on the server /:word/echo
+		-> :word is a placeholder
+	-> And it has request and response objects 
+		-> res and req 
+		-> This is the route handler function which gets executed when the GET request matches the route at the URL in the request 
+	-> We set a variable  
+		-> This variable is called word 
+		-> The value this variable stores is the same as the parameters we require
+		-> The 'word' this uses is the same as the 'word' in the path argument which the function takes 
+		->  req.params returns the values of route parameters 
+	-> We return the JSON object
+		-> We then return the value of the constant which is stored in the variable called word which we set above it 
+		-> This sends a JSON response back to the client 
+		-> We are echoing back the value of the word parameter
+		-> The word parameter is the one which was set in the variable above it 
+		-> The value which was set equal to that parameter was the same one as in the path to the request object 
+*/
+
+app.get("/:word/echo", (req, res) => {
+    const { word } = req.params;
+    res.json({
+      echo: word
+    });
+});
+
+// Question 9,
 
 // Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
