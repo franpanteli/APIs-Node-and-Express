@@ -158,7 +158,48 @@ app.use(function middleware(req, res, next) {
     next();
   });
 
-// Question 7, 
+// Question 7, chaining middleware to create a time server
+/* 
+	-> We are using the app.get method 
+		-> We are doing this because we want to retrieve the time (a piece of information which we want to return to the user in this block of code)
+		-> This is part of route handling for the HTTP GET request method 
+		-> This is on the "now" URL path 
+	-> The first block of code  
+		-> This logs the time when the request from the user was made
+			-> We are converting that data and time into a string 
+			-> This is a timestamp 
+		-> We are storing this time in a variable 
+		-> Then moving onto the next set of instructions in that block of code 
+	-> The next block of code 
+		-> This sends back the value of the time to the user 
+		-> This is the time stored in the variable for the first block of code 
+		-> This is a middleware function in the chain -> we are chaining functions together (like running a list of cells in an ipynb file all one after the other, 'run all')
+		-> This is sending a JSON back to the client -> the client being the user
+		-> We have the user side, and the server side 
+	-> We have chained two middleware functions 
+		-> req <- for the request HTTP object
+		-> res <- for the response HTTP object 
+		-> next <- this passes the control to the next middleware in the stack when called 
+		-> The client makes a request
+		-> Then the server stores the time in a timestamp using the first middleware function 
+		-> Then the second middleware function returns (sends) this back to the client 	
+		-> This is done in the form of a JSON response -> a js object which contains data in a string 
+*/
+
+app.get(
+    "/now",
+    (req, res, next) => {
+      req.time = new Date().toString();
+      next();
+    },
+    (req, res) => {
+      res.send({
+        time: req.time
+      });
+    }
+  );
+
+//  Question 8, getting a route parameter input from the client
 
 // Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
