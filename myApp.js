@@ -1,3 +1,6 @@
+// Below - this line of code was added in for question 5, to add environment variables into the project 
+require('dotenv').config()
+
 let express = require('express');
 let app = express();
 
@@ -72,6 +75,7 @@ app.get("/", (req, res) => {
         -> res.json <- send a JSON response to the client 
         -> This has a key-value pair 
         -> The server responds to a call with this 
+        -> The response is a JSON object -> which contains the string we are responding with 
 */    
 
 app.get('/json', (req, res) => {
@@ -80,8 +84,45 @@ app.get('/json', (req, res) => {
   });
 });
 
+// Question 5, the .env file 
+/*
+    -> An env file was created in the project directory for this question 
+    -> The response for this entire question is inside a app.get method
+        -> This sets up a route handler for HTTP GET requests
+        -> This defines what should happen when a GET request is made to the "/json" endpoint 
+    -> This is again using the same path as in the previous question ("/json")
+    -> In the previous question, we just returned a string based on whether this was called or not 
+    -> This function returns this string in upper case if the content of the .env file has been interacted with 
+    -> We are writing a function which says 
+        -> When this server is interacted with 
+        -> Respond with this message
+        -> If else -> respond with that string in uppercase 
+        -> Return that string, and in JSON format  
+    -> The arrow function 
+        -> req <- this is the object representing the HTTP request 
+        -> res <- this is the object representing the HTTP response 
+    -> var response 
+        -> This sets the value of the variable equal to the JSON object which we would otherwise want to return 
+    -> The if condition 
+        -> We then check if the variable stored inside the .env file for this question is uppercase
+        -> If it is uppercase, we modify the message property of the 'response' object 
+        -> We are doing this using the .toUpperCase() method 
+    -> process.env
+        -> This is how the environment variable is accessed
+        -> We have a variable stored in the .env file -> and we are saying if its value is this, then return this for .get requests
+        -> The server is responding with this response object 
+        -> This response is either the string or an uppercase version of it  
+*/
 
+app.get("/json", (req, res) => {
+    var response = { "message": "Hello json" };
+  
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+      response.message = response.message.toUpperCase();
+    }
+  
+    res.json(response);
+});
 
-
-
+// Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
