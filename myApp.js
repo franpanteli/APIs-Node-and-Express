@@ -229,7 +229,41 @@ app.get("/:word/echo", (req, res) => {
     });
 });
 
-// Question 9,
+// Question 9, get query parameter input from the client
+/* 
+	-> We are using the app.get method to retrieve information 
+	-> The req and res (request and response) objects
+	-> The first two lines inside this request are setting the values of variables 
+		-> The first is the firstName 
+			-> This is for the first name stored in the request query 
+		-> The second is for the last name 
+			-> This is stored in the request query
+			-> The request query is for the first and last name of the person 
+	-> We then set the response query 
+		-> This is the string that we want the server request to respond with 
+		-> The server will send the client a JSON object -> this object stores the string which we are setting in this block of code 
+		-> The string which this returns equals name -> the values contained there are the same as in the variables which were defined above
+		-> Those values were obtained from the argument of the app.get method 
+	-> In more technical terms 
+		-> this sets an Express route for handling HTTP GET requests to this path 
+		-> When the GET request matches the route -> then this route handler function gets executed
+		-> This takes the request object (req) and gives a res (response) object 
+		-> The query parameters which are stored in the variables are included in the URL after the "?" parameter
+			-> e.g in the URL "/name?first=John&last=Doe" <- req.query.first is "John" and req.query.last is "Doe" (syntax)
+		-> The response this sends back to the client is a JSON response	
+		-> This contains the property "name"
+		-> This allows you to take a URL and return the name which it is associated with, based on the syntax above 
+*/
 
+app.get("/name", (req, res) => {
+    let firstName = req.query.first;
+    let lastName = req.query.last;
+    res.json({
+      name: `${firstName} ${lastName}`
+    });
+});
+
+// Question 10, 
+  
 // Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
