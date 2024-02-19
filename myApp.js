@@ -124,5 +124,41 @@ app.get("/json", (req, res) => {
     res.json(response);
 });
 
+// Question 6, implementing a root-level request logger middleware
+/* 
+    -> We are using the app.use method
+        -> This registers a middleware function 
+        -> These have access to the request and response objects 
+        -> They are functions which we are running while requests are being sent to the server 
+        -> These are run in a stack (e.g 'full-stack' developer)
+    -> The argument to this is middleware
+        -> Instead of just req and res, we also have next as an augment to this 
+        -> Then we are defining a variable in js syntax 
+        -> This variable stores the string in the same syntax as in the question 
+            -> This contains information about the incoming request
+            -> This concatenates the HTTP method, request path and client's IP address
+            -> req.method <- this is the HTTP method used in the request 
+            -> req.path <- the path part of the URL requested
+            -> req.ip M- the IP of the client making the request  	
+        -> We then log the result of this 
+        -> next() is then telling the server to move onto the next function -> to avoid getting stuck on this one 
+            -> It's like when you break a loop in Python
+            -> We are passing the route-handler process onto the next route-handler 
+            -> Or to the next middleware in the pipeline 
+    -> The function middleware(req, res, next)
+        -> This defines the middleware function 
+        -> The request and response objects
+        -> Next is a function that passes control to the next middleware in the stack 
+        -> If it's not called, then the request-handling stops here
+*/
+
+app.use(function middleware(req, res, next) {
+    let string = req.method + " " + req.path + " - " + req.ip;
+    console.log(string);
+    next();
+  });
+
+// Question 7, 
+
 // Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
