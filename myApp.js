@@ -263,7 +263,50 @@ app.get("/name", (req, res) => {
     });
 });
 
-// Question 10, 
+// Question 10, using body-parser to Parse POST Requests
+/*
+	This code at first glance:
+		-> We are setting the values of three different variables 
+			-> The first two variables are importing Express and enabling us to use body-parser and the third is setting up an Express app 
+		-> app.use <- we are calling on the use method to use bodyParser 
+			-> This turns off the extended attribute 
+		-> We are finally using bodyParser.json 
+
+	-> In more technical terms: 
+		-> This sets up an Express.js application with body-parser middleware
+		-> This handles incoming data in the request body 
+		-> The first two lines are importing the modules 
+			-> 'Express' <- the Express.js framework 
+			-> 'body-parser' <- this imports the body-parser middleware 
+				-> This is used to parse the request body 
+		-> The third const line <- sets up the Express application 
+			-> This creates an instance of an Express application 
+			-> This handles incoming HTTP requests
+			-> The first two const's are module imports and the third sets up an Express application 
+		-> Configuring the Express application 
+			-> The third constant line set up the Express application and the first two imported the modules for this 
+			-> This section of code is configuring this application 
+			-> We are configuring this application to use the body-parser middleware for parsing URL-encoded data in the request body 
+			-> The extended: false option <- this means that the library uses the Node.js builtin `query string` module to parse the data 
+		-> Configuring the body-parser for JSON data
+			-> This is the app.use method 
+			-> This configures the body-parser middleware for parsing JSON data in the request body 
+		-> These are two confirmations 
+			-> These allow the Express application to handle different types of data in the request body 
+			-> This is used for processing form submissions <- URL-encoded data
+			-> This can also be used for handling JSON data sent in the request body 
+			-> Parsed data is available for route handlers through 'req.body'
+*/
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+app.use(bodyParser.json());
   
 // Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
