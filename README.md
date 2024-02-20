@@ -1,4 +1,4 @@
-# Managing Packages With NPM
+# APIs Node and Express
 
 This repository contains my independent work for the second exercise in freeCodeCamp's [Back End Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis/) course. This section of the course was called "Basic Node and Express", where I solved 12 JavasScipt challenges by writing the myApp.js file for a project in a Gitpod environment. The problem solving approach I used to solve these challenges is outlined in depth in [the project myApp.js file in this repository](https://github.com/franpanteli/APIs-Node-and-Express/blob/main/myApp.js). My notes on the material from this section of the course are contained in [the pdf in this repository.](https://github.com/franpanteli/APIs-Node-and-Express/blob/main/Node%20and%20Express%20Course%20Notes.pdf) These notes are in depth and cover the following topics with Node and Express:
 <ul>
