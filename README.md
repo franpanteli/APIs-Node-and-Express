@@ -1,3 +1,3 @@
-# Basic Node and Express
-I have deployed the project exercise files for this at: https://franpanteli.github.io/APIs-Node-and-Express/
-<img width="160" alt="Screenshot 2024-02-17 at 12 21 26" src="https://github.com/franpanteli/APIs-Node-and-Express/assets/131474705/3bb61c2a-64fe-44ff-9784-bc3ef63d284f">
+# Managing Packages With NPM
+
+This repository contains my independent work for the first exercise in freeCodeCamp's [Back End Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis/) course. This section of the course was called "Managing Packages with NPM", and involved writing the package.json file for a project in a Gitpod environment and submitting its link to pass the required NPM challenges. My notes from completing the challenges for this are contained in [the pdf in this repository.](https://github.com/franpanteli/APIs-Managing-Packages-with-NPM/blob/main/Managing%20Packages%20with%20NPM%20Course%20Notes.pdf)  
