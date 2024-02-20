@@ -309,6 +309,46 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Question 11, using body-parser to Parse POST Requests
-  
+/*
+	This code at first glance:
+		-> In this code we are sending a post request 
+		-> This is to the URL in the path at /name
+		-> We are using req and res <- request and response objects 
+		-> Then we are setting the value of constants 
+			-> The first name is the first element in the input string 
+			-> The last name is the last element in the input string 
+		-> The function then responds 
+			-> The data which it sends back is in the form of a JSON (js) object 
+			-> This string holds the value of two variables 
+			-> The values of these variables were the same ones we set above -> and they are the ones which depend on the input string 
+		-> We are taking the input string which contains someone's first and last names, storing those names in two variables and then returning them back in the form of a string stored in a JSON object 
+			-> We are doing this when the post request is made by the user
+
+	-> In more technical terms: 
+		-> We are defining a route handler for HTTP POST requests 
+		-> This is to the '/name' endpoint in the Express.js application 
+		-> The first line tells the code that when  an HTTP POST request is made to the '/name' endpoint, we are triggering the route handler 
+		-> We are then setting the values of the two variables 
+			-> We are using .body because we are extracting the values of these variables from the request body 
+			-> That request body contains (should contain) the information we want in JSON form -> we are assuming it has this 
+			-> We are then doing the same thing for the last name in the second variable which we set 
+		-> res.json 
+			-> This syntax constructs a JSON response 
+			-> The syntax of the response which the server returns will be in JSON form 
+			-> The value which that string contains is what is returned 
+		-> The client sends the HTTP POST request to the '/name' endpoint with JSON data containing 'first' and 'last' properties 
+		-> Then the route handler extracts those values and responds with a JSON object which contains them in a specific syntax 
+		-> It's a js function which responds to requests made to the server -> it gives information about the cline back to them in a specific syntax 
+*/
+
+app.post('/name', (req, res) => {
+    let firstName = req.body.first;
+    let lastName = req.body.last;
+    res.json({
+      name: `${firstName} ${lastName}`
+    });
+});
+
+
 // Below - this line of code is as part of the tests from the project boilerplate code
  module.exports = app;
